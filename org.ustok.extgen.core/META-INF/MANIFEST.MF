@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ExtGen Core
+Bundle-SymbolicName: org.ustok.extgen.core;singleton:=true
+Bundle-Version: 1.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: www.ustok.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: 
+ org.ustok.extgen.core,
+ org.ustok.extgen.core.codegen,
+ org.ustok.extgen.core.codegen.util,
+ org.ustok.extgen.core.generator,
+ org.ustok.extgen.core.model.epmodel,
+ org.ustok.extgen.core.model.epmodel.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.core.resources;bundle-version="3.7.100",
+ org.eclipse.acceleo.engine;bundle-version="3.1.1"
+Bundle-ActivationPolicy: lazy

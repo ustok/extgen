@@ -1,0 +1,279 @@
+[comment encoding = UTF-8 /]
+[module beanGenerator('http://www.ustok.org/extgen/model/epmodel')]
+[import org::ustok::extgen::core::codegen::license/]
+[import org::ustok::extgen::core::codegen::util/]
+
+[comment
+	entry point to create beans provided by the extension resolver.
+/]
+
+[template public beanGenerator(elmt : EPElement)]
+
+[comment @main /]
+[file (toJavaClassName(elmt).concat('.java'), false, 'UTF-8')]
+[license()/]
+
+package [elmt.parent.basePackage/].[elmt.parent.id/];
+
+import org.eclipse.core.runtime.IConfigurationElement;
+[if (requiresCoreExceptionImport(elmt))]
+import org.eclipse.core.runtime.CoreException;
+[/if]
+[if (requiresListImport(elmt))]
+import java.util.List;
+[/if]
+
+
+[generateComment(elmt)/]
+public class [toJavaClassName(elmt)/] {
+
+	[generateFields(elmt)/]
+	[generateConstructor(elmt)/]
+	[generateGettersSetters(elmt)/]
+}
+
+[/file]
+[/template]
+
+
+[comment ----- template methods ----- /]
+
+
+[template private generateComment(elmt : EPElement)]
+/**
+[if (not description.oclIsUndefined())]
+ * [description.trim()/]
+[/if]
+ *
+ * @created [currentDate()/]
+ * @generated
+ */
+[/template]
+
+
+[template private generateComment(attr : EPAttribute)]
+[if (not description.oclIsUndefined())]
+/**
+ * [description.trim()/]
+ */[/if]
+[/template]
+
+
+[template private generateConstructor(elmt : EPElement)]
+/**
+ * Creates a new [elmt.toJavaClassName()/].
+ *
+ * @param pConfigurationElement the configuration element to set.
+ */
+protected [elmt.toJavaClassName()/](IConfigurationElement pConfigurationElement) {
+	fConfigurationElement = pConfigurationElement;
+}
+[br()/]
+[/template]
+
+
+[template private generateFields(elmt : EPElement)]
+/** the configuration element */
+private final IConfigurationElement fConfigurationElement;
+[br()/]
+[for (attr : EPAttribute | attributes)]
+[if (not ('Java'= attr.type.toString()))]
+[attr.generateField()/]
+[br()/]
+[/if]
+[/for]
+[for (ref : EPRef | elmt.refs)]
+[ref.generateField()/]
+[/for]
+[/template]
+
+
+[template private generateField(attr : EPAttribute)]
+/** the [attr.name/] */
+private [toJavaType(attr)/] f[attr.name.toUpperFirst()/];
+[/template]
+
+
+[template private generateField(ref : EPRef)]
+/** the [ref.element.name/] */
+[if (ref.isMulti())]
+private List<[ref.element.toJavaClassName()/]> f[ref.element.name.toUpperFirst()/]s;
+[else]
+private [ref.element.toJavaClassName()/] f[ref.element.name.toUpperFirst()/];
+[/if]
+[/template]
+
+
+[template private generateGettersSetters(elmt : EPElement)]
+[generateGetterContributionElement()/]
+[for (attr : EPAttribute | elmt.attributes)]
+[if (not ('Java'= attr.type.toString()))]
+[attr.generateGetterSetter()/]
+[else]
+[attr.generateJavaFieldCreator()/]
+[/if]
+[/for]
+[for (ref : EPRef | elmt.refs)]
+[ref.generateGetterSetter()/]
+[/for]
+[/template]
+
+
+[template public generateGetterContributionElement(any : OclAny)]
+/**
+ * Returns the configuration element.
+ *
+ * @return configuration element.
+ */
+protected IConfigurationElement getConfigurationElement() {
+	return fConfigurationElement;
+}
+[br()/]
+[/template]
+
+
+[template public generateGetterSetter(attr : EPAttribute)]
+/**
+ * Returns the [attr.name/].
+[if (not description.oclIsUndefined())]
+ * <p>
+ * Description: [attr.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @return [attr.name/].
+ */
+[if (attr.deprecated)]
+@Deprecated
+[/if]
+public [toJavaType(attr)/] get[attr.name.toUpperFirst()/]() {
+	return [toFieldVariable(attr)/];
+}
+[br()/]
+/**
+ * Sets the [attr.name/].
+[if (not description.oclIsUndefined())]
+ * <p>
+ * Description: [attr.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @param [toParameterVariable(attr)/] the [attr.name/] to set.
+ */
+[if (attr.deprecated)]
+@Deprecated
+[/if]
+protected void set[attr.name.toUpperFirst()/]([toJavaType(attr)/] [toParameterVariable(attr)/]) {
+	[toFieldVariable(attr)/] = [toParameterVariable(attr)/];
+}
+[br()/]
+[/template]
+
+
+[template public generateGetterSetter(ref : EPRef)]
+[if (ref.isMulti())]
+[ref.generateGetterSetterMulti()/]
+[else]
+[ref.generateGetterSetterSingle()/]
+[/if]
+[/template]
+
+
+[template public generateGetterSetterMulti(ref : EPRef)]
+/**
+ * Returns the [ref.element.name.toUpperFirst()/]s.
+[if (not ref.element.oclIsUndefined())]
+ * <p>
+ * Description: [ref.element.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @return [ref.element.name.toUpperFirst()/].
+ */
+public List<[ref.element.toJavaClassName()/]> get[ref.element.name.toUpperFirst()/]s() {
+	return f[ref.element.name.toUpperFirst()/]s;
+}
+[br()/]
+/**
+ * Sets the [ref.element.name.toUpperFirst()/] references.
+[if (not ref.element.oclIsUndefined())]
+ * <p>
+ * Description: [ref.element.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @param p[ref.element.name.toUpperFirst()/]s the [ref.element.name.toUpperFirst()/]s to set.
+ */
+protected void set[ref.element.name.toUpperFirst()/]s(List<[ref.element.toJavaClassName()/]> p[ref.element.name.toUpperFirst()/]s) {
+	f[ref.element.name.toUpperFirst()/]s = p[ref.element.name.toUpperFirst()/]s;
+}
+[/template]
+
+
+[template public generateGetterSetterSingle(ref : EPRef)]
+/**
+ * Returns the [ref.element.name.toUpperFirst()/] reference.
+[if (not ref.element.oclIsUndefined())]
+ * <p>
+ * Description: [ref.element.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @return [ref.element.name.toUpperFirst()/].
+ */
+public [ref.element.toJavaClassName()/] get[ref.element.name.toUpperFirst()/]() {
+	return f[ref.element.name.toUpperFirst()/];
+}
+[br()/]
+/**
+ * Sets the [ref.element.name.toUpperFirst()/] reference.
+[if (not ref.element.oclIsUndefined())]
+ * <p>
+ * Description: [ref.element.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @param p[ref.element.name.toUpperFirst()/] the [ref.element.name.toUpperFirst()/] to set.
+ */
+protected void set[ref.element.name.toUpperFirst()/]([ref.element.toJavaClassName()/] p[ref.element.name.toUpperFirst()/]) {
+	f[ref.element.name.toUpperFirst()/] = p[ref.element.name.toUpperFirst()/];
+}
+[/template]
+
+
+[template public generateJavaFieldCreator(attr : EPAttribute)]
+/**
+ * Creates a new instance of the [attr.name/].
+[if (not description.oclIsUndefined())]
+ * <p>
+ * Description: [attr.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @return new [attr.name/].
+ * @throws CoreException if the instance cannot be created.
+ */
+[if (attr.deprecated)]
+@Deprecated
+[/if]
+public [toJavaType(attr)/] create[attr.name.toUpperFirst()/]() throws CoreException {
+	Object newInstance = fConfigurationElement.createExecutableExtension("[attr.name/]");
+	return ([toJavaType(attr)/]) newInstance;
+}
+[br()/]
+[/template]
+
+
+
+[template public toFieldVariable(attr : EPAttribute)]
+f[attr.name.toUpperFirst()/]
+[/template]
+
+[template public toParameterVariable(attr : EPAttribute)]
+p[attr.name.toUpperFirst()/]
+[/template]
+
+[template private br(any : OclAny)]
+[/template]
+
+

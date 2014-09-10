@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            canFinishEarly="false"
+            category="org.eclipse.pde.PDE"
+            class="org.ustok.extgen.ui.wizard.ExtGenWizard"
+            hasPages="true"
+            icon="icons/plugin_javasearch.gif"
+            id="org.trulli.extgen.ui.wizard.ExtGenWizard"
+            name="Extension Resolver"
+            project="false">
+         <description>
+            Create extension resolvers.
+         </description>
+      </wizard>
+   </extension>
+
+</plugin>

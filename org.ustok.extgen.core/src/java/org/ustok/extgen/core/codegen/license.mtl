@@ -1,0 +1,14 @@
+[comment encoding = UTF-8 /]
+[module license('http://www.ustok.org/extgen/model/epmodel')]
+[import org::ustok::extgen::core::codegen::util/]
+
+[template public license(any : OclAny)]
+/*
+ * Generated using ExtGen.
+ * www.ustok.org
+ * -----------------------
+ *
+ * @created [currentDate()/]
+ */
+[/template]
+

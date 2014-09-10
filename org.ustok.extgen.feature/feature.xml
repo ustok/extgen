@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.ustok.extgen.feature"
+      label="ExtGen"
+      version="1.1.0.qualifier"
+      provider-name="www.ustok.org">
+
+   <description url="http://www.ustok.org/">
+      Feature to generate extension resolvers for self-defined extension points.
+   </description>
+
+   <copyright url="http://www.ustok.org/">
+      Copyright (c) 2011-2012 ustok.org. All rights reserved.
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html.
+   </license>
+
+   <url>
+      <discovery label="ustok.org" url="http://www.ustok.org/"/>
+   </url>
+
+   <plugin
+         id="org.ustok.extgen.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.ustok.extgen.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.ustok.extgen.core.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.ustok.extgen.ui.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ExtGen UI
+Bundle-SymbolicName: org.ustok.extgen.ui;singleton:=true
+Bundle-Version: 1.1.0.qualifier
+Bundle-Activator: org.ustok.extgen.ui.ExtGenUIActivator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms,
+ org.eclipse.core.resources,
+ org.eclipse.pde.runtime,
+ org.eclipse.pde.core,
+ org.eclipse.ui.ide,
+ org.ustok.extgen.core;bundle-version="1.0.0",
+ org.eclipse.jdt.core;bundle-version="3.7.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: www.ustok.org
