@@ -18,9 +18,9 @@
 
 	<repositories>
 		<repository>
-			<id>indigo</id>
+			<id>luna</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/indigo</url>
+			<url>http://download.eclipse.org/releases/luna</url>
 		</repository>
 	</repositories>
 
@@ -29,7 +29,7 @@
 		<osgi.ws>cocoa</osgi.ws>
 		<osgi.arch>x86_64</osgi.arch>
 		
-		<tychoVersion>0.10.0</tychoVersion>
+		<tychoVersion>0.21.0</tychoVersion>
 	</properties>
 
 	<build>
