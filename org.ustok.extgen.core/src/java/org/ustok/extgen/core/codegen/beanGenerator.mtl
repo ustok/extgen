@@ -265,6 +265,28 @@ public [toJavaType(attr)/] create[attr.name.toUpperFirst()/]() throws CoreExcept
 
 
 
+[template public hasJavaFieldCreator(attr : EPAttribute)]
+/**
+ * Returns <code>true</code> if the [attr.name/] is specified.
+[if (not description.oclIsUndefined())]
+ * <p>
+ * Description: [attr.description.trim()/]
+ * </p>
+[/if]
+ *
+ * @return <code>true</code> if [attr.name/] is specified. <code>false</code> otherwise.
+ */
+[if (attr.deprecated)]
+@Deprecated
+[/if]
+public boolean has[attr.name.toUpperFirst()/]() throws CoreException {
+	return getConfigurationElement().getAttribute("[attr.name/]") != null;
+}
+[br()/]
+[/template]
+
+
+
 [template public toFieldVariable(attr : EPAttribute)]
 f[attr.name.toUpperFirst()/]
 [/template]
