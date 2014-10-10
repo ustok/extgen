@@ -111,6 +111,7 @@ private [ref.element.toJavaClassName()/] f[ref.element.name.toUpperFirst()/];
 [attr.generateGetterSetter()/]
 [else]
 [attr.generateJavaFieldCreator()/]
+[attr.hasJavaField()/]
 [/if]
 [/for]
 [for (ref : EPRef | elmt.refs)]
@@ -265,7 +266,7 @@ public [toJavaType(attr)/] create[attr.name.toUpperFirst()/]() throws CoreExcept
 
 
 
-[template public hasJavaFieldCreator(attr : EPAttribute)]
+[template public hasJavaField(attr : EPAttribute)]
 /**
  * Returns <code>true</code> if the [attr.name/] is specified.
 [if (not description.oclIsUndefined())]
@@ -279,8 +280,8 @@ public [toJavaType(attr)/] create[attr.name.toUpperFirst()/]() throws CoreExcept
 [if (attr.deprecated)]
 @Deprecated
 [/if]
-public boolean has[attr.name.toUpperFirst()/]() throws CoreException {
-	return getConfigurationElement().getAttribute("[attr.name/]") != null;
+public boolean has[attr.name.toUpperFirst()/]() {
+	return fConfigurationElement.getAttribute("[attr.name/]") != null;
 }
 [br()/]
 [/template]
