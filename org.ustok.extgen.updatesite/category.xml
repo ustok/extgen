@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature url="features/org.ustok.extgen.feature_1.1.0.qualifier.jar" id="org.ustok.extgen.feature" version="1.1.0.qualifier">
-      <category name="extgen"/>
+      <category name="Ustok"/>
    </feature>
    <category-def name="Ustok" label="Ustok">
       <description>
