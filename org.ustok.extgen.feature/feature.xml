@@ -2,7 +2,7 @@
 <feature
       id="org.ustok.extgen.feature"
       label="ExtGen"
-      version="1.1.0.qualifier"
+      version="1.2.0.qualifier"
       provider-name="www.ustok.org">
 
    <description url="http://www.ustok.org/">
