@@ -22,6 +22,11 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/luna</url>
 		</repository>
+		<repository>
+			<id>ustok</id>
+			<layout>p2</layout>
+			<url>http://www.ustok.org/downloads/releases/repo/</url>
+		</repository>
 	</repositories>
 
 	<properties>
