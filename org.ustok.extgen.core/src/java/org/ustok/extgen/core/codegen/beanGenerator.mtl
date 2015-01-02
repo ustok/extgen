@@ -126,7 +126,7 @@ private [ref.element.toJavaClassName()/] f[ref.element.name.toUpperFirst()/];
  *
  * @return configuration element.
  */
-protected IConfigurationElement getConfigurationElement() {
+public IConfigurationElement getConfigurationElement() {
 	return fConfigurationElement;
 }
 [br()/]
