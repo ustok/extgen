@@ -198,9 +198,11 @@ class WizardPageCfg extends WizardPage {
 				fTableViewer.setInput(model);
 				fTableViewer.refresh();
 
-				String pluginID = model.getPluginBase().getId();
-				if (pluginID != null) {
-					fTextPackage.setText(pluginID + ".extension");
+				if (model != null) {
+					String pluginID = model.getPluginBase().getId();
+					if (pluginID != null) {
+						fTextPackage.setText(pluginID + ".extension");
+					}
 				}
 			}
 		}
