@@ -5,15 +5,19 @@
 
 package org.ustok.exgen.internal.acceptance.util;
 
-import java.net.URL;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
-import org.eclipse.core.internal.events.BuildCommand;
-import org.eclipse.core.resources.ICommand;
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.osgi.framework.Bundle;
 
@@ -34,59 +38,51 @@ public class WorkspaceCopyUtil {
 	 * @param pSourceBundle
 	 *        the source bundle to read from. Cannot be <code>null</code>.
 	 * @param pProjectRootPath
-	 *        the project root path. Cannot be <code>null</code>.
+	 *        the project root path. Should start with an "/". Cannot be <code>null</code>.
+	 * @param pProjectName
+	 *        the project name. Cannot be <code>null</code>.
 	 * @throws CoreException
 	 *         if writing goes wrong.
+	 * @throws Exception
 	 */
-	public void copyProjectToWorkspace(Bundle pSourceBundle, String pProjectRootPath) throws CoreException {
+	public static void copyProjectToWorkspace(Bundle pSourceBundle, String pProjectRootPath, String pProjectName)
+			throws Exception {
 		Assert.isNotNull(pSourceBundle, "Source bundle cannot be null.");
 		Assert.isNotNull(pProjectRootPath, "Project root path cannot be null.");
+		Assert.isNotNull(pProjectName, "Project cannot be null.");
 
-		String projectName = new Path(pProjectRootPath).lastSegment().toString();
+		File file = new File(FileLocator.toFileURL(pSourceBundle.getEntry(pProjectRootPath)).toURI());
 
-		IProject project = createAndOpenProject(projectName);
-		
-		URL entry = pSourceBundle.getEntry(pProjectRootPath);
-		
-
-	}
-
-	private IProject createAndOpenProject(String pProjectName) throws CoreException {
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(pProjectName);
-		project.create(null);
-		project.open(null);
 
-		addNaturesJDTAndPDE(project);
-
-		addBuildCommands(project, "org.eclipse.jdt.core.javabuilder", "org.eclipse.pde.ManifestBuilder",
-				"org.eclipse.pde.SchemaBuilder");
-
-		return project;
-	}
-
-	private void addNaturesJDTAndPDE(IProject project) throws CoreException {
-		IProjectDescription description = project.getDescription();
-		description.setNatureIds(new String[]{"org.eclipse.pde.PluginNature", "org.eclipse.jdt.core.javanature"});
-		project.setDescription(description, null);
-	}
-
-	private void addBuildCommands(IProject pProject, String... pBuilderNames) throws CoreException {
-		IProjectDescription description = pProject.getDescription();
-
-		ICommand[] commands = description.getBuildSpec();
-		ICommand[] newCommands = new ICommand[commands.length + pBuilderNames.length];
-		System.arraycopy(commands, 0, newCommands, 0, commands.length);
-
-		int i = 0;
-		for (String pBuilderName : pBuilderNames) {
-			@SuppressWarnings("restriction")
-			ICommand newCommand = new BuildCommand();
-			newCommand.setBuilderName(pBuilderName);
-			newCommands[commands.length + (i++)] = newCommand;
+		for (File child : file.listFiles()) {
+			copyFileToContainer(child, project);
 		}
+	}
 
-		description.setBuildSpec(commands);
-		pProject.setDescription(description, null);
+	private static void copyFileToContainer(File pChild, IContainer pContainer) throws Exception {
+		if (pChild.isDirectory()) {
+			internalCopyFolderToContainer(pChild, pContainer);
+		} else {
+			internalCopyFileToContainer(pChild, pContainer);
+		}
+	}
+
+	private static void internalCopyFileToContainer(File pChild, IContainer pContainer) throws FileNotFoundException,
+			CoreException {
+		InputStream in = new FileInputStream(pChild);
+		IFile newFile = pContainer.getFile(new Path(pChild.getName()));
+		newFile.create(in, true, null);
+	}
+
+	private static void internalCopyFolderToContainer(File pChild, IContainer pContainer) throws CoreException, Exception {
+		System.out.println("In " + pContainer + ": Creating folder: \"" + pChild.getName() + "\"");
+		IFolder folder = pContainer.getFolder(new Path(pChild.getName()));
+		folder.create(true, true, null);
+
+		for (File child : pChild.listFiles()) {
+			copyFileToContainer(child, folder);
+		}
 	}
 
 }
