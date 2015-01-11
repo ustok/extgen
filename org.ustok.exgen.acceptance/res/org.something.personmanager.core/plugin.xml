@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="exporters" name="Exporters" schema="schema/exporters.exsd"/>
+   <extension
+         point="org.something.personmanager.core.exporters">
+      <exporter
+            class="org.something.personmanager.core.export.impl.SampleExporter1"
+            description="favourite exporter 1"
+            favourite="true"
+            name="Exporter1"
+            restrictedAttribute="Value1">
+         <ExternalTarget
+               name="target1">
+         </ExternalTarget>
+      </exporter>
+      <exporter
+            class="org.something.personmanager.core.export.impl.SampleExporter2"
+            description="non-favourite exporter 2"
+            favourite="false"
+            name="Exporter2"
+            restrictedAttribute="Value3">
+         <WorkspaceTarget
+               file="a_file.txt"
+               path="one/two/three">
+         </WorkspaceTarget>
+      </exporter>
+   </extension>
+
+</plugin>

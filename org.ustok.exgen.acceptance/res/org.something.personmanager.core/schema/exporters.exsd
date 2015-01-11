@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.something.personmanager.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.something.personmanager.core" id="exporters" name="Exporters"/>
+      </appinfo>
+      <documentation>
+         Exporters can be contributed to export given person manager models to some target.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="exporter" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="exporter">
+      <annotation>
+         <documentation>
+            An exporter to export a given Person Manager model to a certain target.
+         </documentation>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="ExternalTarget" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="WorkspaceTarget"/>
+         </choice>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of the exporter.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  the description of the exporter.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The actual exporter implementation.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="org.something.personmanager.core.export.AbstractExporter:"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="favourite" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  Favourite flag. Set true to indicate that the exporter should be listed as favourite.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="restrictedAttribute">
+            <annotation>
+               <documentation>
+                  restricted attribute
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="Value1">
+                  </enumeration>
+                  <enumeration value="Value2">
+                  </enumeration>
+                  <enumeration value="Value3">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="ExternalTarget">
+      <annotation>
+         <documentation>
+            An external target
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  name of the target.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="WorkspaceTarget">
+      <complexType>
+         <attribute name="path" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the path of the target.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="file" type="string">
+            <annotation>
+               <documentation>
+                  the file to write to.
+               </documentation>
+               <appinfo>
+                  <meta.attribute deprecated="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>
