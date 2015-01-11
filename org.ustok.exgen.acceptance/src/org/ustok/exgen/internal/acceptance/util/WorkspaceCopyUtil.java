@@ -76,7 +76,6 @@ public class WorkspaceCopyUtil {
 	}
 
 	private static void internalCopyFolderToContainer(File pChild, IContainer pContainer) throws CoreException, Exception {
-		System.out.println("In " + pContainer + ": Creating folder: \"" + pChild.getName() + "\"");
 		IFolder folder = pContainer.getFolder(new Path(pChild.getName()));
 		folder.create(true, true, null);
 

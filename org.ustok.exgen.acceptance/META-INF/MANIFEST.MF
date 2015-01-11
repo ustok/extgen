@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ExtGen Acceptance Tests
-Bundle-SymbolicName: org.ustok.exgen.acceptance
+Bundle-SymbolicName: org.ustok.extgen.acceptance
 Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.ustok.exgen.acceptance.ExtGenAcceptanceActivator
 Bundle-Vendor: Ustok.org

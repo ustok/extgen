@@ -34,7 +34,7 @@ public class TestOpenWizardHappyDay {
 
 	private static final String PROJECT_NAME = "org.something.personmanager.core";
 
-	private static Bundle bundle = Platform.getBundle("org.ustok.exgen.acceptance");
+	private static Bundle bundle = Platform.getBundle("org.ustok.extgen.acceptance");
 
 	private SWTWorkbenchBot bot;
 

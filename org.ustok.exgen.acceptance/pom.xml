@@ -4,7 +4,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ustok.extgen</groupId>
-	<artifactId>org.ustok.exgen.acceptance</artifactId>
+	<artifactId>org.ustok.extgen.acceptance</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 	<packaging>eclipse-test-plugin</packaging>
 
@@ -70,6 +70,9 @@
         		<version>${tychoVersion}</version>
 		        <configuration>
 		          <useUIHarness>true</useUIHarness>
+		          <useUIThread>false</useUIThread>
+		          <product>org.eclipse.sdk.ide</product>
+		          <application>org.eclipse.ui.ide.workbench</application>
 		        </configuration>
  	        </plugin>
  	        

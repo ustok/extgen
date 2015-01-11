@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.ustok.exgen.internal.acceptance.bots.NewExtensionResolverDialogFirstPageBot;
 import org.ustok.exgen.internal.acceptance.bots.NewExtensionResolverDialogSecondPageBot;
+import org.ustok.exgen.internal.acceptance.util.WorkbenchUtil;
 import org.ustok.exgen.internal.acceptance.util.WorkspaceUtil;
 
 /**
@@ -35,6 +36,7 @@ public class TestOpenWizardAndCancel {
 	@Before
 	public void prepare() throws Exception {
 		bot = new SWTWorkbenchBot();
+		WorkbenchUtil.closeViewPartIfFound_Welcome(bot);
 	}
 
 	@Test
