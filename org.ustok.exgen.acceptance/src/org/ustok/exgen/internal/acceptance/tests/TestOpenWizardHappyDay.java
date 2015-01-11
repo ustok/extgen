@@ -5,6 +5,10 @@
 
 package org.ustok.exgen.internal.acceptance.tests;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.junit.After;
@@ -16,6 +20,7 @@ import org.osgi.framework.Bundle;
 import org.ustok.exgen.internal.acceptance.bots.NewExtensionResolverDialogFirstPageBot;
 import org.ustok.exgen.internal.acceptance.bots.NewExtensionResolverDialogSecondPageBot;
 import org.ustok.exgen.internal.acceptance.util.WorkbenchUtil;
+import org.ustok.exgen.internal.acceptance.util.WorkspaceComparingAssertor;
 import org.ustok.exgen.internal.acceptance.util.WorkspaceCopyUtil;
 import org.ustok.exgen.internal.acceptance.util.WorkspaceUtil;
 
@@ -29,12 +34,13 @@ public class TestOpenWizardHappyDay {
 
 	private static final String PROJECT_NAME = "org.something.personmanager.core";
 
+	private static Bundle bundle = Platform.getBundle("org.ustok.exgen.acceptance");
+
 	private SWTWorkbenchBot bot;
 
 	@BeforeClass
 	public static void prepareClass() throws Exception {
 		WorkspaceUtil.createAndOpenPluginProject(PROJECT_NAME);
-		Bundle bundle = Platform.getBundle("org.ustok.exgen.acceptance");
 		WorkspaceCopyUtil.copyProjectToWorkspace(bundle, "/res/" + PROJECT_NAME, PROJECT_NAME);
 	}
 
@@ -45,7 +51,7 @@ public class TestOpenWizardHappyDay {
 	}
 
 	@Test
-	public void testHappyDay() {
+	public void testHappyDay() throws Exception {
 		NewExtensionResolverDialogFirstPageBot firstPage = NewExtensionResolverDialogFirstPageBot.openDialog(bot);
 		firstPage.selectProject(PROJECT_NAME);
 
@@ -54,7 +60,29 @@ public class TestOpenWizardHappyDay {
 		nextPage.setSourceFolder("src/generated");
 		nextPage.finish();
 
-		// TODO finish to check generated code
+		verifyGeneratedFiles();
+	}
+
+	private void verifyGeneratedFiles() throws Exception {
+		String fileExp1 = "/res/expectedGeneratorResult/org/something/personmanager/core/Exporter.java";
+		String fileExp2 = "/res/expectedGeneratorResult/org/something/personmanager/core/ExportersExtension.java";
+		String fileExp3 = "/res/expectedGeneratorResult/org/something/personmanager/core/ExportersExtensionResolver.java";
+		String fileExp4 = "/res/expectedGeneratorResult/org/something/personmanager/core/ExternalTarget.java";
+		String fileExp5 = "/res/expectedGeneratorResult/org/something/personmanager/core/WorkspaceTarget.java";
+
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(PROJECT_NAME);
+		IFile fileActual1 = project.getFile(new Path("/src/generated/org/something/personmanager/core/Exporter.java"));
+		IFile fileActual2 = project.getFile(new Path("/src/generated/org/something/personmanager/core/ExportersExtension.java"));
+		IFile fileActual3 = project.getFile(new Path(
+				"/src/generated/org/something/personmanager/core/ExportersExtensionResolver.java"));
+		IFile fileActual4 = project.getFile(new Path("/src/generated/org/something/personmanager/core/ExternalTarget.java"));
+		IFile fileActual5 = project.getFile(new Path("/src/generated/org/something/personmanager/core/WorkspaceTarget.java"));
+
+		WorkspaceComparingAssertor.assertEquals(bundle, fileExp1, fileActual1);
+		WorkspaceComparingAssertor.assertEquals(bundle, fileExp2, fileActual2);
+		WorkspaceComparingAssertor.assertEquals(bundle, fileExp3, fileActual3);
+		WorkspaceComparingAssertor.assertEquals(bundle, fileExp4, fileActual4);
+		WorkspaceComparingAssertor.assertEquals(bundle, fileExp5, fileActual5);
 	}
 
 	@After
