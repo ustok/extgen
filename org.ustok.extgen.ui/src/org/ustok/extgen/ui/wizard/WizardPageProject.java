@@ -1,6 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 www.ustok.org
- * All rights reserved. This program and the accompanying materials
+ * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
@@ -31,58 +30,37 @@ class WizardPageProject extends WizardPage {
 	/** page name */
 	public static final String NAME = WizardPageProject.class.getSimpleName();
 
-	/** combo: project */
 	private Combo fComboProject;
 
-	/** selection */
 	private IStructuredSelection fSelection;
 
-	/**
-	 * Constructor of CreateExtensionResolverWizardPage.
-	 * 
-	 * @param pSelection
-	 *            the selection to create the wizard for.
-	 */
 	WizardPageProject(IStructuredSelection pSelection) {
 		super(WizardPageProject.NAME);
 		fSelection = pSelection;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-	 */
 	@Override
 	public void createControl(Composite pParent) {
 		Composite comp = new Composite(pParent, SWT.NONE);
-		comp.setLayoutData(GridDataFactory.fillDefaults().grab(true, true)
-				.create());
+		comp.setLayoutData(GridDataFactory.fillDefaults().grab(true, true).create());
 
 		final int numColumns = 2;
-		comp.setLayout(GridLayoutFactory.swtDefaults().numColumns(numColumns)
-				.create());
+		comp.setLayout(GridLayoutFactory.swtDefaults().numColumns(numColumns).create());
 
 		Label label = new Label(comp, SWT.NONE);
 		label.setText("Project:");
 
 		fComboProject = new Combo(comp, SWT.BORDER | SWT.READ_ONLY | SWT.SINGLE);
-		fComboProject.setLayoutData(GridDataFactory.fillDefaults()
-				.grab(true, false).create());
+		fComboProject.setLayoutData(GridDataFactory.fillDefaults().grab(true, false).create());
 
 		setControl(comp);
-		setDescription("Select the project with the extension-points you want to create extension resolvers for.");
+		setDescription("Select the project to create the resolver for.");
 		setTitle("Select Project");
 
 		initCombo();
 
 		fComboProject.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
 			@Override
 			public void widgetSelected(SelectionEvent pE) {
 				setPageComplete(isPageComplete());
@@ -95,16 +73,12 @@ class WizardPageProject extends WizardPage {
 		});
 	}
 
-	/**
-	 * Initializes the project combo.
-	 */
 	private void initCombo() {
 		String[] allProjects = ExtGenUiUtil.findAllPDEProjects();
 		fComboProject.setItems(allProjects);
 
 		int index = -1;
-		String selectedProjectName = ExtGenUiUtil
-				.fetchSelectedJavaProjectName(fSelection);
+		String selectedProjectName = ExtGenUiUtil.fetchSelectedJavaProjectName(fSelection);
 		if (selectedProjectName != null) {
 			index = fComboProject.indexOf(selectedProjectName);
 		}
@@ -113,11 +87,6 @@ class WizardPageProject extends WizardPage {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.wizard.WizardPage#isPageComplete()
-	 */
 	@Override
 	public boolean isPageComplete() {
 		return fComboProject != null && fComboProject.getSelectionIndex() != -1;
