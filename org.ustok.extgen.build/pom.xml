@@ -20,7 +20,7 @@
 		<repository>
 			<id>luna</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/luna</url>
+			<url>http://download.eclipse.org/releases/neon</url>
 		</repository>
 		<repository>
 			<id>ustok</id>
@@ -34,7 +34,7 @@
 		<osgi.ws>cocoa</osgi.ws>
 		<osgi.arch>x86_64</osgi.arch>
 		
-		<tychoVersion>0.21.0</tychoVersion>
+		<tychoVersion>0.26.0</tychoVersion>
 	</properties>
 
 	<build>
