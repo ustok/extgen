@@ -3,8 +3,13 @@ language: java
 jdk:
   - oraclejdk8
 
-after_success:
-- ./deploy_dev_repo.sh
-
 # build root pom using Maven 3.
 # see https://docs.travis-ci.com/user/getting-started/
+
+
+# if build is successful, deploy dev repo
+deploy:
+  provider: script
+  script: deploy_dev_repo.sh
+  on:
+    branch: master
