@@ -1,1 +1,4 @@
 language: java
+
+# build root pom using Maven 3.
+# see https://docs.travis-ci.com/user/getting-started/
