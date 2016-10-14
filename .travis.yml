@@ -3,5 +3,12 @@ language: java
 jdk:
   - oraclejdk8
 
+after_success:
+if ([ "$TRAVIS_BRANCH" == "master" ] ; then
+  echo "This will deploy!"
+else
+  echo "This will not deploy!"
+fi
+
 # build root pom using Maven 3.
 # see https://docs.travis-ci.com/user/getting-started/
