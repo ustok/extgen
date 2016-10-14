@@ -9,11 +9,11 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../org.ustok.extgen.core</module>
-		<module>../org.ustok.extgen.core.test</module>
-		<module>../org.ustok.extgen.ui</module>
-		<module>../org.ustok.extgen.feature</module>
-		<module>../org.ustok.extgen.updatesite</module>
+		<module>org.ustok.extgen.core</module>
+		<module>org.ustok.extgen.core.test</module>
+		<module>org.ustok.extgen.ui</module>
+		<module>org.ustok.extgen.feature</module>
+		<module>org.ustok.extgen.updatesite</module>
 	</modules>
 
 	<repositories>
@@ -33,38 +33,38 @@
 		<osgi.os>macosx</osgi.os>
 		<osgi.ws>cocoa</osgi.ws>
 		<osgi.arch>x86_64</osgi.arch>
-		
+
 		<tychoVersion>0.26.0</tychoVersion>
 	</properties>
 
 	<build>
 		<plugins>
-		
+
 			<plugin>
     		    <groupId>org.eclipse.tycho</groupId>
       			<artifactId>tycho-maven-plugin</artifactId>
       			<version>${tychoVersion}</version>
       			<extensions>true</extensions>
 		    </plugin>
-    
+
 			<plugin>
         		<groupId>org.eclipse.tycho</groupId>
         		<artifactId>tycho-compiler-plugin</artifactId>
         		<version>${tychoVersion}</version>
       		</plugin>
-      		
+
       		<plugin>
 		        <groupId>org.eclipse.tycho</groupId>
         		<artifactId>tycho-p2-publisher-plugin</artifactId>
         		<version>${tychoVersion}</version>
       		</plugin>
-      		
+
       		<plugin>
 		        <groupId>org.eclipse.tycho</groupId>
         		<artifactId>tycho-surefire-plugin</artifactId>
         		<version>${tychoVersion}</version>
  	        </plugin>
- 	        
+
  	        <plugin>
 		        <groupId>org.eclipse.tycho</groupId>
         		<artifactId>tycho-source-plugin</artifactId>
@@ -78,7 +78,7 @@
 					</execution>
 				</executions>
 		    </plugin>
-      		
+
 
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -105,7 +105,7 @@
 					</environments>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
