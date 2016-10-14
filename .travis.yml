@@ -4,7 +4,7 @@ jdk:
   - oraclejdk8
 
 after_success:
-if ([ "$TRAVIS_BRANCH" == "master" ] ; then
+if [ "$TRAVIS_BRANCH" == "master" ] ; then
   echo "This will deploy!"
 else
   echo "This will not deploy!"
