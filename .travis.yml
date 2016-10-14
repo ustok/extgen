@@ -8,8 +8,5 @@ jdk:
 
 
 # if build is successful, deploy dev repo
-deploy:
-  provider: script
+after_success:
   script: deploy_dev_repo.sh
-  on:
-    branch: master
