@@ -1,10 +1,4 @@
-/*
- * Generated using ExtGen.
- * www.ustok.org
- * -----------------------
- *
- */
-
+// CHECKSTYLE:OFF
 package org.something.personmanager.core.extension.exporters;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -17,30 +11,19 @@ import java.util.List;
  */
 public class ExportersExtension {
 
-	/** the configuration element */
 	private final IConfigurationElement fConfigurationElement;
 	
-	/** the point */
 	private String fPoint;
 	
-	/** the id */
 	private String fId;
 	
-	/** the name */
 	private String fName;
 	
-	/** the contributor */
 	private String fContributor;
 	
-	/** the exporter */
 	private List<Exporter> fExporters;
 	
 	
-	/**
-	 * Creates a new ExportersExtension.
-	 *
-	 * @param pConfigurationElement the configuration element to set.
-	 */
 	protected ExportersExtension(IConfigurationElement pConfigurationElement) {
 		fConfigurationElement = pConfigurationElement;
 	}

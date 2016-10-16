@@ -1,10 +1,4 @@
-/*
- * Generated using ExtGen.
- * www.ustok.org
- * -----------------------
- *
- */
-
+// CHECKSTYLE:OFF
 package org.something.personmanager.core.extension.exporters;
 
 import java.util.ArrayList;
@@ -27,9 +21,6 @@ import org.eclipse.core.runtime.Status;
  */
 public class ExportersExtensionResolver {
 
-   /**
-    * Creates a new resolver.
-    */
 	public ExportersExtensionResolver() {
 	} 
 

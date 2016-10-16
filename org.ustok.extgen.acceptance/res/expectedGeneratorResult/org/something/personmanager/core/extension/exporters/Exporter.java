@@ -1,10 +1,4 @@
-/*
- * Generated using ExtGen.
- * www.ustok.org
- * -----------------------
- *
- */
-
+// CHECKSTYLE:OFF
 package org.something.personmanager.core.extension.exporters;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -19,33 +13,21 @@ import java.util.List;
  */
 public class Exporter {
 
-	/** the configuration element */
 	private final IConfigurationElement fConfigurationElement;
 	
-	/** the name */
 	private String fName;
 	
-	/** the description */
 	private String fDescription;
 	
-	/** the favourite */
 	private boolean fFavourite;
 	
-	/** the restrictedAttribute */
 	private String fRestrictedAttribute;
 	
-	/** the ExternalTarget */
 	private List<ExternalTarget> fExternalTargets;
 	
-	/** the WorkspaceTarget */
 	private WorkspaceTarget fWorkspaceTarget;
 	
 	
-	/**
-	 * Creates a new Exporter.
-	 *
-	 * @param pConfigurationElement the configuration element to set.
-	 */
 	protected Exporter(IConfigurationElement pConfigurationElement) {
 		fConfigurationElement = pConfigurationElement;
 	}
