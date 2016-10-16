@@ -8,5 +8,5 @@ jdk:
 
 
 # if build is successful, deploy dev repo
-after_success:
-  script: deploy_dev_repo.sh
+# after_success:
+#  script: deploy_dev_repo.sh
