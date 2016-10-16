@@ -3,7 +3,6 @@
  * www.ustok.org
  * -----------------------
  *
- * @created 
  */
 
 package org.something.personmanager.core.extension.exporters;
@@ -14,7 +13,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 /**
  * An external target
  *
- * @created 
  * @generated
  */
 public class ExternalTarget {

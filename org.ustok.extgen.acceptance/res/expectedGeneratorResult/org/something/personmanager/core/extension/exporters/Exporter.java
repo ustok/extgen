@@ -3,7 +3,6 @@
  * www.ustok.org
  * -----------------------
  *
- * @created 
  */
 
 package org.something.personmanager.core.extension.exporters;
@@ -16,7 +15,6 @@ import java.util.List;
 /**
  * An exporter to export a given Person Manager model to a certain target.
  *
- * @created 
  * @generated
  */
 public class Exporter {

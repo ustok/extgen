@@ -3,7 +3,6 @@
  * www.ustok.org
  * -----------------------
  *
- * @created 
  */
 
 package org.something.personmanager.core.extension.exporters;
@@ -13,7 +12,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 
 /**
  *
- * @created 
  * @generated
  */
 public class WorkspaceTarget {

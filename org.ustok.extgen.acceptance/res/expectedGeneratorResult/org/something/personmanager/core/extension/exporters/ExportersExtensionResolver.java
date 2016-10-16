@@ -3,7 +3,6 @@
  * www.ustok.org
  * -----------------------
  *
- * @created 
  */
 
 package org.something.personmanager.core.extension.exporters;
@@ -24,7 +23,6 @@ import org.eclipse.core.runtime.Status;
  * The Extension resolver accesses the extension registry and fetches all extensions contributed to
  * the extension-points for which the resolver has been generated.
  *
- * @created 
  * @generated
  */
 public class ExportersExtensionResolver {
