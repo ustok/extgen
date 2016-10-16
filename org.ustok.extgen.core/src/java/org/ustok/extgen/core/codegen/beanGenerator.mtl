@@ -45,7 +45,6 @@ public class [toJavaClassName(elmt)/] {
  * [description.trim()/]
 [/if]
  *
- * @created [currentDate()/]
  * @generated
  */
 [/template]
