@@ -6,6 +6,8 @@ jdk:
 # build root pom using Maven 3.
 # see https://docs.travis-ci.com/user/getting-started/
 
+script:
+  - mvn clean install
 
 # if build is successful, deploy dev repo
 # after_success:
