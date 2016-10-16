@@ -1,0 +1,1 @@
+This is just a dummy to prevent having an empty directory that is not created

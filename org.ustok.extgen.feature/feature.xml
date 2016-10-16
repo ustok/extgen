@@ -3,14 +3,14 @@
       id="org.ustok.extgen.feature"
       label="ExtGen"
       version="1.2.0.qualifier"
-      provider-name="www.ustok.org">
+      provider-name="Ustok.org">
 
    <description url="http://www.ustok.org/">
       Feature to generate extension resolvers for self-defined extension points.
    </description>
 
    <copyright url="http://www.ustok.org/">
-      Copyright (c) 2011-2012 ustok.org. All rights reserved.
+      Copyright (c) Ustok.org
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">

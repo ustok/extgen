@@ -40,7 +40,7 @@ public class ExternalTarget {
 	 *
 	 * @return configuration element.
 	 */
-	protected IConfigurationElement getConfigurationElement() {
+	public IConfigurationElement getConfigurationElement() {
 		return fConfigurationElement;
 	}
 	
