@@ -1,10 +1,4 @@
-/*
- * Generated using ExtGen.
- * www.ustok.org
- * -----------------------
- *
- */
-
+// CHECKSTYLE:OFF
 package org.something.personmanager.core.extension.exporters;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -16,21 +10,13 @@ import org.eclipse.core.runtime.IConfigurationElement;
  */
 public class WorkspaceTarget {
 
-	/** the configuration element */
 	private final IConfigurationElement fConfigurationElement;
 	
-	/** the path */
 	private String fPath;
 	
-	/** the file */
 	private String fFile;
 	
 	
-	/**
-	 * Creates a new WorkspaceTarget.
-	 *
-	 * @param pConfigurationElement the configuration element to set.
-	 */
 	protected WorkspaceTarget(IConfigurationElement pConfigurationElement) {
 		fConfigurationElement = pConfigurationElement;
 	}

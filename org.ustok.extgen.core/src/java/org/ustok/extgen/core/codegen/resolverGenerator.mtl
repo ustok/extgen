@@ -1,6 +1,5 @@
 [comment encoding = UTF-8 /]
 [module resolverGenerator('http://www.ustok.org/extgen/model/epmodel')]
-[import org::ustok::extgen::core::codegen::license/]
 [import org::ustok::extgen::core::codegen::util/]
 
 [comment ----- extension resolver class template ----- /]
@@ -9,8 +8,7 @@
 
 [comment @main /]
 [file (toJavaClassPrefix(model).concat('ExtensionResolver').concat('.java'), false, 'UTF-8')]
-[license()/]
-
+// CHECKSTYLE:OFF
 package [model.basePackage/].[model.id/];
 
 import java.util.ArrayList;
@@ -33,9 +31,6 @@ import org.eclipse.core.runtime.Status;
  */
 public class [toJavaClassPrefix(model)/]ExtensionResolver {
 
-   /**
-    * Creates a new resolver.
-    */
 	public [toJavaClassPrefix(model)/]ExtensionResolver() {
 	} 
 

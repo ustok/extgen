@@ -1,10 +1,4 @@
-/*
- * Generated using ExtGen.
- * www.ustok.org
- * -----------------------
- *
- */
-
+// CHECKSTYLE:OFF
 package org.something.personmanager.core.extension.exporters;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -17,18 +11,11 @@ import org.eclipse.core.runtime.IConfigurationElement;
  */
 public class ExternalTarget {
 
-	/** the configuration element */
 	private final IConfigurationElement fConfigurationElement;
 	
-	/** the name */
 	private String fName;
 	
 	
-	/**
-	 * Creates a new ExternalTarget.
-	 *
-	 * @param pConfigurationElement the configuration element to set.
-	 */
 	protected ExternalTarget(IConfigurationElement pConfigurationElement) {
 		fConfigurationElement = pConfigurationElement;
 	}

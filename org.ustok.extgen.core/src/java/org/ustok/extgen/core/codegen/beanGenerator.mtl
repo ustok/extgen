@@ -1,6 +1,5 @@
 [comment encoding = UTF-8 /]
 [module beanGenerator('http://www.ustok.org/extgen/model/epmodel')]
-[import org::ustok::extgen::core::codegen::license/]
 [import org::ustok::extgen::core::codegen::util/]
 
 [comment
@@ -11,8 +10,7 @@
 
 [comment @main /]
 [file (toJavaClassName(elmt).concat('.java'), false, 'UTF-8')]
-[license()/]
-
+// CHECKSTYLE:OFF
 package [elmt.parent.basePackage/].[elmt.parent.id/];
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -59,11 +57,6 @@ public class [toJavaClassName(elmt)/] {
 
 
 [template private generateConstructor(elmt : EPElement)]
-/**
- * Creates a new [elmt.toJavaClassName()/].
- *
- * @param pConfigurationElement the configuration element to set.
- */
 protected [elmt.toJavaClassName()/](IConfigurationElement pConfigurationElement) {
 	fConfigurationElement = pConfigurationElement;
 }
@@ -72,7 +65,6 @@ protected [elmt.toJavaClassName()/](IConfigurationElement pConfigurationElement)
 
 
 [template private generateFields(elmt : EPElement)]
-/** the configuration element */
 private final IConfigurationElement fConfigurationElement;
 [br()/]
 [for (attr : EPAttribute | attributes)]
@@ -88,13 +80,11 @@ private final IConfigurationElement fConfigurationElement;
 
 
 [template private generateField(attr : EPAttribute)]
-/** the [attr.name/] */
 private [toJavaType(attr)/] f[attr.name.toUpperFirst()/];
 [/template]
 
 
 [template private generateField(ref : EPRef)]
-/** the [ref.element.name/] */
 [if (ref.isMulti())]
 private List<[ref.element.toJavaClassName()/]> f[ref.element.name.toUpperFirst()/]s;
 [else]
