@@ -9,6 +9,8 @@ package org.ustok.extgen.internal.ui.provider;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.pde.core.plugin.IExtensions;
+import org.eclipse.pde.core.plugin.IPluginExtensionPoint;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
 
 /**
@@ -17,41 +19,26 @@ import org.eclipse.pde.core.plugin.IPluginModelBase;
  * Input element is an instance of {@link IPluginModelBase}.
  * </p>
  * 
- * @author thomas
+ * @author thomas, ingomohr
  * @created Oct 31 2011
  */
-public class ExtensionPointTableContentProvider implements
-		IStructuredContentProvider {
+public class ExtensionPointTableContentProvider implements IStructuredContentProvider {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-	 */
 	@Override
 	public Object[] getElements(Object pInputElement) {
-		IPluginModelBase base = (IPluginModelBase) pInputElement;
-		if (base.getExtensions() != null) {
-			return base.getExtensions().getExtensionPoints();
+		final IPluginModelBase base = (IPluginModelBase) pInputElement;
+		final IExtensions extensions = base.getExtensions();
+		if (extensions != null) {
+			final IPluginExtensionPoint[] extensionPoints = extensions.getExtensionPoints();
+			return extensionPoints;
 		}
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-	 */
 	@Override
 	public void dispose() {
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-	 *      java.lang.Object, java.lang.Object)
-	 */
 	@Override
 	public void inputChanged(Viewer pViewer, Object pOldInput, Object pNewInput) {
 	}
