@@ -33,6 +33,11 @@ import org.ustok.exgen.internal.acceptance.util.WorkspaceUtil;
 public class TestOpenWizardHappyDay {
 
 	private static final String PROJECT_NAME = "org.something.personmanager.core";
+	private static final String EXPORTER_JAVA = "Exporter.java";
+	private static final String EXPORTERS_EXTENSION_JAVA = "ExportersExtension.java";
+	private static final String EXPORTERS_EXTENSION_RESOLVER_JAVA = "ExportersExtensionResolver.java";
+	private static final String EXTERNAL_TARGET_JAVA = "ExternalTarget.java";
+	private static final String WORKSPACE_TARGET_JAVA = "WorkspaceTarget.java";
 
 	private static Bundle bundle = Platform.getBundle("org.ustok.extgen.acceptance");
 
@@ -65,19 +70,19 @@ public class TestOpenWizardHappyDay {
 
 	private void verifyGeneratedFiles() throws Exception {
 		final String expPrefix = "/res/expectedGeneratorResult/org/something/personmanager/core/extension/exporters/";
-		String fileExp1 = expPrefix + "Exporter.java";
-		String fileExp2 = expPrefix + "ExportersExtension.java";
-		String fileExp3 = expPrefix + "ExportersExtensionResolver.java";
-		String fileExp4 = expPrefix + "ExternalTarget.java";
-		String fileExp5 = expPrefix + "WorkspaceTarget.java";
+		String fileExp1 = expPrefix + EXPORTER_JAVA;
+		String fileExp2 = expPrefix + EXPORTERS_EXTENSION_JAVA;
+		String fileExp3 = expPrefix + EXPORTERS_EXTENSION_RESOLVER_JAVA;
+		String fileExp4 = expPrefix + EXTERNAL_TARGET_JAVA;
+		String fileExp5 = expPrefix + WORKSPACE_TARGET_JAVA;
 
 		final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(PROJECT_NAME);
 		final String actPrefix = "/src/generated/org/something/personmanager/core/extension/exporters/";
-		IFile fileActual1 = project.getFile(new Path(actPrefix + "Exporter.java"));
-		IFile fileActual2 = project.getFile(new Path(actPrefix + "ExportersExtension.java"));
-		IFile fileActual3 = project.getFile(new Path(actPrefix + "ExportersExtensionResolver.java"));
-		IFile fileActual4 = project.getFile(new Path(actPrefix + "ExternalTarget.java"));
-		IFile fileActual5 = project.getFile(new Path(actPrefix + "WorkspaceTarget.java"));
+		IFile fileActual1 = project.getFile(new Path(actPrefix + EXPORTER_JAVA));
+		IFile fileActual2 = project.getFile(new Path(actPrefix + EXPORTERS_EXTENSION_JAVA));
+		IFile fileActual3 = project.getFile(new Path(actPrefix + EXPORTERS_EXTENSION_RESOLVER_JAVA));
+		IFile fileActual4 = project.getFile(new Path(actPrefix + EXTERNAL_TARGET_JAVA));
+		IFile fileActual5 = project.getFile(new Path(actPrefix + WORKSPACE_TARGET_JAVA));
 
 		WorkspaceComparingAssertor.assertEquals(bundle, fileExp1, fileActual1);
 		WorkspaceComparingAssertor.assertEquals(bundle, fileExp2, fileActual2);
