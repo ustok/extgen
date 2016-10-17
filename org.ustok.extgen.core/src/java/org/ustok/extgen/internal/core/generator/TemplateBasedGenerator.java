@@ -84,8 +84,7 @@ public class TemplateBasedGenerator implements IGenerator {
 				File nativeFolder = new File(targetFolder.getLocation()
 						.toOSString());
 
-				ResolverGenerator resolverGenerator = new ResolverGenerator(
-						epModel, nativeFolder, arguments);
+				final ResolverGenerator resolverGenerator = new ResolverGenerator(epModel, nativeFolder, arguments);
 				resolverGenerator.doGenerate(null); // TODO: pass monitor
 				pMonitor.worked(workUnit);
 
@@ -96,7 +95,8 @@ public class TemplateBasedGenerator implements IGenerator {
 					pMonitor.worked(workUnit);
 				}
 				
-				final ProviderGenerator providerGen = new ProviderGenerator(epModel, nativeFolder, arguments);
+				final File folderForProvider = new File(targetFolder.getFolder("provider").getLocation().toOSString());
+				final ProviderGenerator providerGen = new ProviderGenerator(epModel, folderForProvider, arguments);
 				providerGen.doGenerate(null); // TODO pass monitor
 				pMonitor.worked(workUnit);
 

@@ -1,5 +1,5 @@
 // CHECKSTYLE:OFF
-package org.something.personmanager.core.extension.exporters;
+package org.something.personmanager.core.extension.exporters.provider;
 
 import java.util.ArrayList;
 import java.util.List;

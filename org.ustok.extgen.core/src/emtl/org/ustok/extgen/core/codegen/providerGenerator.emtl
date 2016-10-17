@@ -27,7 +27,7 @@
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.ustok.org/extgen/model/epmodel#//EPModel/id"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;&#xA;import java.util.ArrayList;&#xA;import java.util.List;&#xA;&#xA;/**&#xA; * Provider to access all contributions made by extensions to extension point &quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".provider;&#xA;&#xA;import java.util.ArrayList;&#xA;import java.util.List;&#xA;&#xA;/**&#xA; * Provider to access all contributions made by extensions to extension point &quot;"/>
         <body xsi:type="ocl.ecore:PropertyCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/10">
@@ -210,7 +210,7 @@
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/providerGenerator">
       <details key="start" value="212"/>
-      <details key="end" value="719"/>
+      <details key="end" value="728"/>
       <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/providerGenerator/%">
@@ -220,7 +220,7 @@
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/providerGenerator/%.1">
       <details key="start" value="284"/>
-      <details key="end" value="707"/>
+      <details key="end" value="716"/>
       <details key="line" value="10"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/providerGenerator/%.1/%">
@@ -255,12 +255,12 @@
     </eAnnotations>
     <eAnnotations source="positions.10" references="/0/providerGenerator/%.1/%.4">
       <details key="start" value="427"/>
-      <details key="end" value="565"/>
+      <details key="end" value="574"/>
       <details key="line" value="12"/>
     </eAnnotations>
     <eAnnotations source="positions.11" references="/0/providerGenerator/%.1/%.5">
-      <details key="start" value="566"/>
-      <details key="end" value="568"/>
+      <details key="start" value="575"/>
+      <details key="end" value="577"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.12" references="/0/providerGenerator/%.1/%.5/self">
@@ -269,38 +269,38 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.13" references="/0/providerGenerator/%.1/%.6">
-      <details key="start" value="570"/>
-      <details key="end" value="607"/>
+      <details key="start" value="579"/>
+      <details key="end" value="616"/>
       <details key="line" value="18"/>
     </eAnnotations>
     <eAnnotations source="positions.14" references="/0/providerGenerator/%.1/%.7">
-      <details key="start" value="608"/>
-      <details key="end" value="632"/>
+      <details key="start" value="617"/>
+      <details key="end" value="641"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.15" references="/0/providerGenerator/%.1/%.7/model">
-      <details key="start" value="626"/>
-      <details key="end" value="631"/>
+      <details key="start" value="635"/>
+      <details key="end" value="640"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.16" references="/0/providerGenerator/%.1/%.8">
-      <details key="start" value="634"/>
-      <details key="end" value="654"/>
+      <details key="start" value="643"/>
+      <details key="end" value="663"/>
       <details key="line" value="22"/>
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/providerGenerator/%.1/%.9">
-      <details key="start" value="655"/>
-      <details key="end" value="679"/>
+      <details key="start" value="664"/>
+      <details key="end" value="688"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.18" references="/0/providerGenerator/%.1/%.9/model">
-      <details key="start" value="673"/>
-      <details key="end" value="678"/>
+      <details key="start" value="682"/>
+      <details key="end" value="687"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.19" references="/0/providerGenerator/%.1/%.10">
-      <details key="start" value="681"/>
-      <details key="end" value="700"/>
+      <details key="start" value="690"/>
+      <details key="end" value="709"/>
       <details key="line" value="24"/>
     </eAnnotations>
     <eAnnotations source="positions.20" references="/0/providerGenerator/%.1/%.11">

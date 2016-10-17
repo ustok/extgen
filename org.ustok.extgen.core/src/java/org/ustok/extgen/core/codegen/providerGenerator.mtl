@@ -9,7 +9,7 @@
 [comment @main /]
 [file (toJavaClassPrefix(model).concat('Provider').concat('.java'), false, 'UTF-8')]
 // CHECKSTYLE:OFF
-package [model.basePackage/].[model.id/];
+package [model.basePackage/].[model.id/].provider;
 
 import java.util.ArrayList;
 import java.util.List;

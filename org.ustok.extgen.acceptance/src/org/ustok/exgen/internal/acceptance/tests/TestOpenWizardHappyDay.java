@@ -32,6 +32,7 @@ import org.ustok.exgen.internal.acceptance.util.WorkspaceUtil;
  */
 public class TestOpenWizardHappyDay {
 
+	private static final String PROVIDER_SEGMENT = "provider/";
 	private static final String PROJECT_NAME = "org.something.personmanager.core";
 	private static final String EXPORTER_JAVA = "Exporter.java";
 	private static final String EXPORTERS_EXTENSION_JAVA = "ExportersExtension.java";
@@ -76,7 +77,7 @@ public class TestOpenWizardHappyDay {
 		String fileExp3 = expPrefix + EXPORTERS_EXTENSION_RESOLVER_JAVA;
 		String fileExp4 = expPrefix + EXTERNAL_TARGET_JAVA;
 		String fileExp5 = expPrefix + WORKSPACE_TARGET_JAVA;
-		String fileExp6 = expPrefix + EXPORTERS_PROVIDER_JAVA;
+		String fileExp6 = expPrefix + PROVIDER_SEGMENT + EXPORTERS_PROVIDER_JAVA;
 
 		final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(PROJECT_NAME);
 		final String actPrefix = "/src/generated/org/something/personmanager/core/extension/exporters/";
@@ -85,7 +86,7 @@ public class TestOpenWizardHappyDay {
 		IFile fileActual3 = project.getFile(new Path(actPrefix + EXPORTERS_EXTENSION_RESOLVER_JAVA));
 		IFile fileActual4 = project.getFile(new Path(actPrefix + EXTERNAL_TARGET_JAVA));
 		IFile fileActual5 = project.getFile(new Path(actPrefix + WORKSPACE_TARGET_JAVA));
-		IFile fileActual6 = project.getFile(new Path(actPrefix + EXPORTERS_PROVIDER_JAVA));
+		IFile fileActual6 = project.getFile(new Path(actPrefix + PROVIDER_SEGMENT + EXPORTERS_PROVIDER_JAVA));
 
 		WorkspaceComparingAssertor.assertEquals(bundle, fileExp1, fileActual1);
 		WorkspaceComparingAssertor.assertEquals(bundle, fileExp2, fileActual2);
