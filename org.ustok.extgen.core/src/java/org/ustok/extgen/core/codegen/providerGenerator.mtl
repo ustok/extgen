@@ -1,0 +1,29 @@
+[comment encoding = UTF-8 /]
+[module providerGenerator('http://www.ustok.org/extgen/model/epmodel')]
+[import org::ustok::extgen::core::codegen::util/]
+
+[comment ----- extensions provider class template ----- /]
+
+[template public providerGenerator(model : EPModel)]
+
+[comment @main /]
+[file (toJavaClassPrefix(model).concat('Provider').concat('.java'), false, 'UTF-8')]
+// CHECKSTYLE:OFF
+package [model.basePackage/].[model.id/];
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Provider to access all contributions made by extensions to extension point "[id/]".
+ *
+ * @generated
+ */
+public class [toJavaClassPrefix(model)/]Provider {
+
+	public [toJavaClassPrefix(model)/]Provider() {
+	}
+
+}
+[/file]
+[/template]

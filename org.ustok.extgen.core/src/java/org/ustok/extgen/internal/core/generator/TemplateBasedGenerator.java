@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.ustok.extgen.core.ExtGenCore;
 import org.ustok.extgen.core.codegen.BeanGenerator;
+import org.ustok.extgen.core.codegen.ProviderGenerator;
 import org.ustok.extgen.core.codegen.ResolverGenerator;
 import org.ustok.extgen.core.generator.GeneratorCfg;
 import org.ustok.extgen.core.generator.GeneratorException;
@@ -94,6 +95,10 @@ public class TemplateBasedGenerator implements IGenerator {
 					generator.doGenerate(null); // TODO: pass monitor
 					pMonitor.worked(workUnit);
 				}
+				
+				final ProviderGenerator providerGen = new ProviderGenerator(epModel, nativeFolder, arguments);
+				providerGen.doGenerate(null); // TODO pass monitor
+				pMonitor.worked(workUnit);
 
 				folder.refreshLocal(IResource.DEPTH_INFINITE, null);
 			}
