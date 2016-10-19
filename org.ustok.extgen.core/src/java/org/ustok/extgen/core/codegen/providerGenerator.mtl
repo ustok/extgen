@@ -13,6 +13,8 @@ package [model.basePackage/].[model.id/].provider;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.core.runtime.CoreException;
+import [model.basePackage/].[model.id/].*;
 
 /**
  * Provider to access all contributions made by extensions to extension point "[id/]".
@@ -23,6 +25,39 @@ public class [toJavaClassPrefix(model)/]Provider {
 
 	public [toJavaClassPrefix(model)/]Provider() {
 	}
+
+	private List<[rootElement.toJavaClassName()/]> resolveExtensions() throws CoreException {
+		final [toJavaClassPrefix(model)/]ExtensionResolver resolver = new [toJavaClassPrefix(model)/]ExtensionResolver();
+		return resolver.resolveExtensions();
+	}
+
+	//-------------------------------------------------------------------------------
+	/*
+	public List<Exporter> getExporters() throws CoreException {
+		final List<Exporter> result = new ArrayList<>();
+		resolveExtensions().forEach(ext -> result.addAll(ext.getExporters()));
+		return result;
+	}
+
+	public List<String> getExporterNames() throws CoreException {
+		final List<String> result = new ArrayList<>();
+		getExporters().forEach(exp -> result.add(exp.getName()));
+		return result;
+	}
+
+	public List<String> getExporterDescriptions() throws CoreException {
+		final List<String> result = new ArrayList<>();
+		getExporters().forEach(exp -> result.add(exp.getDescription()));
+		return result;
+	}
+
+	private List<ExportersExtension> resolveExtensions() throws CoreException {
+		final ExportersExtensionResolver resolver = new ExportersExtensionResolver();
+		return resolver.resolveExtensions();
+	}
+
+	*/
+	//-------------------------------------------------------------------------------
 
 }
 [/file]
